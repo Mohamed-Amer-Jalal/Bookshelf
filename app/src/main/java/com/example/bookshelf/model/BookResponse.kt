@@ -1,22 +1,12 @@
 package com.example.bookshelf.model
 
-import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.JsonIgnoreUnknownKeys
-
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable
-@JsonIgnoreUnknownKeys
-data class BookResponse(
-    val items: List<BookItem> = emptyList()
-)
-
 
 @Serializable
-data class BookItem(
-    val id: String,
-    val volumeInfo: VolumeInfo
-)
+data class BookResponse(val items: List<BookItem> = emptyList())
+
+@Serializable
+data class BookItem(val id: String, val volumeInfo: VolumeInfo)
 
 @Serializable
 data class VolumeInfo(
@@ -35,4 +25,3 @@ data class ImageLinks(
     val large: String? = null,
     val extraLarge: String? = null
 )
-

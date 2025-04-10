@@ -8,14 +8,9 @@ interface BooksRepository {
     suspend fun getBookById(id: String): BookItem
 }
 
-class DefaultBooksRepository(
-    private val apiService: BooksApiService
-) : BooksRepository {
-    override suspend fun getBooks(query: String): List<BookItem> {
-        return apiService.searchBooks(query).items
-    }
+class DefaultBooksRepository(private val apiService: BooksApiService) : BooksRepository {
+    override suspend fun getBooks(query: String): List<BookItem> =
+        apiService.searchBooks(query).items
 
-    override suspend fun getBookById(id: String): BookItem {
-        return apiService.getBookById(id)
-    }
+    override suspend fun getBookById(id: String): BookItem = apiService.getBookById(id)
 }
